@@ -1,0 +1,83 @@
+---
+title: "RMarkdown Test Document"
+author:
+- Author 1
+- Author 2
+date: Last compiled on `r format(Sys.time(), '%B %d, %Y')` at `r format(Sys.time(),'%l:%M %p - %Z')`
+output:
+  html_document: 
+    toc: true
+    number_sections: true
+    toc_float: true
+  word_document:
+    toc: true
+    number_sections: true
+  pdf_document: 
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+# First Header
+
+Insert inline LaTex between dollar signs, e.g. $\mu$. A great online equation editor for LaTex may be found at CodeCogs (<https://latex.codecogs.com/eqneditor/editor.php>)
+
+## First Subheader
+
+Can insert LaTex on its own line between double dollar signs, e.g.
+
+$$
+x+\frac{1}{2}=\gamma_1
+$$
+
+Text between double stars is **bold**. Bulleted Lists have a - in front
+
+-   List item 1
+
+-   List item 2
+
+# Second Header
+
+Add a new R code chunk by clicking the *Insert Chunk* button on the toolbar
+
+```{r}
+head(cars)
+```
+
+If knitting to html, dataframes with many columns may be paged with rmarkdown:paged_table. Will not work with Word or PDF
+
+```{r}
+#rmarkdown::paged_table(head(cars))
+```
+
+Dataframes in Word and PDF (as well at html) may be alternatively formatted with knitr::kable.
+
+```{r}
+knitr::kable(head(cars))
+```
+
+Output may be displayed without code using echo=FALSE. This is not recommended unless you show the complete code at the end of the document.
+
+```{r echo=FALSE}
+mean(cars$speed)
+```
+
+Graphics/Plots may be displayed as well
+
+```{r}
+plot(cars)
+```
+
+# Complete R Code
+
+It is a good idea to include this at the end of every RMarkdown document
+
+```{r eval=FALSE}
+head(cars)
+knitr::kable(head(cars))
+mean(cars$speed)
+plot(cars)
+```
