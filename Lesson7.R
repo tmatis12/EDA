@@ -1,7 +1,7 @@
 #This R file refers to the following lesson page 
 #https://docs.google.com/document/d/e/2PACX-1vQb1GpCpyi9m8LGpiojOvJqr8uQnBoaYAAOjhXLrPF1vxk4bHbElIFBjcfwD-XxVH-rhGwZgjXNofmV/pub
 
-#### Programing Basics in R #### 
+#### Programming Basics in R #### 
 
 #Problem: add together the elements of vectors x and y and put into a vector z
 x<-c(1,2,3,4)
