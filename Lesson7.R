@@ -17,11 +17,9 @@ z
 #using functions with vectors for input/output is a "vectorized" approach 
 z<-x+y
 z
-z<-sum(x,y)
-z
 
 #may define your own functions, passing in/out vectors
-square<-function(a,b) a+b
+square<-function(a,b){a^2+b^2}
 z<-square(x,y)
 z
 
@@ -38,14 +36,14 @@ z<-x+y
 z
 
 #### Read in Function from Packages ####
-#install.packages("tidyr") install packages only once 
+install.packages("tidyr") #install packages only once 
 
-dat<-read.csv("/Users/timothymatis/Downloads/ProductLeadtimes.csv",header=FALSE)
+dat<-read.csv("https://raw.githubusercontent.com/tmatis12/datafiles/main/ProductLeadtimes.csv",header=FALSE)
 dat
 dat<-tidyr::pivot_longer(dat,cols=-V1) #Can call function from package with package::function()
 dat
 
-dat<-read.csv("/Users/timothymatis/Downloads/ProductLeadtimes.csv",header=FALSE)
+dat<-read.csv("https://raw.githubusercontent.com/tmatis12/datafiles/main/ProductLeadtimes.csv",header=FALSE)
 dat
 library(tidyr) #Load packages with library()
 dat<-pivot_longer(dat,cols=-V1) #Can call functions without package specification
@@ -53,14 +51,18 @@ dat
 dat<-dat[,-2] #drop names column
 dat
 colnames(dat)<-c("Product","Obs")
+dat$Obs2<-dat$Obs-mean(dat$Obs,na.rm=TRUE)
+dat
 
 ## Filter by Product 1
 dat2<-dat[dat$Product=="Product1",]
+dat2
 mean(dat2$Obs,na.rm=TRUE) #Mean of Product 1 Leadtimes
 sd(dat2$Obs,na.rm=TRUE) #Standard Deviation of Product 1 Leadtimes
 
 ##Obtain Summary Stats of All Products
 Means<-aggregate(Obs~Product,data=dat,mean)
+Means
 colnames(Means)<-c("Product","Mean")
 Means
 
@@ -68,5 +70,4 @@ StDev<-aggregate(Obs~Product,data=dat,sd)
 colnames(StDev)<-c("Product","StDev")
 StDev
 
-merge(Means,StDev)
-
+merge(Means,StDev,by="Product")
