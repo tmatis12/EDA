@@ -49,16 +49,20 @@ plot(Boston$medv,Boston$lstat) # mdef=median house value, lstat= % lower status
 cor(Boston$medv,Boston$lstat)
 cor(Boston$medv,Boston$lstat, method="spearman")
 
-######### Categorical by Categorical: CramerV: Strength of Association #######
+######### Categorical by Categorical: CramersV: Strength of Association #######
+mtcars
 library(greybox)
 greybox::tableplot(mtcars$am,mtcars$gear)
 greybox::cramer(mtcars$am,mtcars$gear)
+greybox::tableplot(mtcars$am,mtcars$vs)
+greybox::cramer(mtcars$am,mtcars$vs)
 
 ######### Categorical by Numerical: Regression #############
+mtcars
 greybox::mcor(mtcars$gear,mtcars$mpg)
 summary(lm(mpg~factor(gear),data=mtcars))# compare to mcor output, note R=sqrt(R^2)
 
 ########### All Associations ##############
-greybox::spread(mtcars)
+str(mtcars)
 greybox::assoc(mtcars) #Pearson, CramerV, mcor
-
+greybox::spread(mtcars)
