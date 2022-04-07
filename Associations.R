@@ -59,7 +59,7 @@ greybox::cramer(mtcars$am,mtcars$vs)
 
 ######### Categorical by Numerical: Regression #############
 mtcars
-greybox::mcor(mtcars$gear,mtcars$mpg)
+greybox::mcor(mtcars$gear,mtcars$mpg) # R = coefficient of multiple correlation
 summary(lm(mpg~factor(gear),data=mtcars))# compare to mcor output, note R=sqrt(R^2)
 
 ########### All Associations ##############
