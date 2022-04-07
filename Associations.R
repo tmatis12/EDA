@@ -1,4 +1,4 @@
-########## Measures of Association ###################
+########## Measures of Bivariate Association ###################
 
 ############ Numerical by Numerical: Linear Correlation - Pearson's Correlation Coefficient #####
 data() #built in datasets in R 
